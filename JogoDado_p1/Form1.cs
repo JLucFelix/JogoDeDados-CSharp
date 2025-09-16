@@ -18,7 +18,7 @@ namespace JogoDado_p1
         private int animacaoPassos = 15;
         private string pastaFotos;
 
-        private int vezJogador = 1; // 1 ou 2
+        private int vezJogador = 1; 
         private int jogadorAtual;
         private int rodadaAtual = 0;
         private int maxRodadas = 3;
@@ -34,16 +34,14 @@ namespace JogoDado_p1
             {
                 MessageBox.Show("Pasta 'fotos_dados' não encontrada. Coloque as imagens nela (dado1.png a dado6.png).");
             }
-            // --- MUDANÇA AQUI: PREPARA A TABELA NO INÍCIO ---
-            // Adiciona 3 linhas vazias na tabela para representar as rodadas fixas
+
             for (int i = 0; i < maxRodadas; i++)
             {
                 dataGridViewHistorico.Rows.Add();
             }
         }
 
-        // Os métodos dos botões não precisam de alteração
-        // ... (btnJogador1Normal_Click, btnJogador1Viciado_Click, etc.) ...
+
         #region Handlers de Clique dos Botões
         private void btnJogador1Normal_Click(object sender, EventArgs e)
         {
@@ -94,7 +92,7 @@ namespace JogoDado_p1
 
             passosAtual++;
 
-            // Animação do dado
+
             int faceAnimada;
             if (dadoAtual is DadoNormal)
                 faceAnimada = random.Next(1, 7);
@@ -110,7 +108,7 @@ namespace JogoDado_p1
                 pictureBoxAtual.Image = Image.FromFile(caminhoImg);
             }
 
-            // Fim da animação
+
             if (passosAtual >= animacaoPassos)
             {
                 timer1.Stop();
@@ -122,46 +120,44 @@ namespace JogoDado_p1
                     pictureBoxAtual.Image = Image.FromFile(caminhoFinal);
                 }
 
-                // 1. Registra o resultado e troca a vez
                 if (jogadorAtual == 1)
                 {
                     historicoJogador1.Add(faceFinal);
                     vezJogador = 2;
                 }
-                else // jogadorAtual == 2
+                else 
                 {
                     historicoJogador2.Add(faceFinal);
                     vezJogador = 1;
-                    // A linha 'rodadaAtual++' foi REMOVIDA daqui.
+
                 }
 
-                // 2. Atualiza a grade com a rodada ATUAL (antes de incrementar)
+
                 AtualizarGridFixo();
 
-                // --- CORREÇÃO AQUI ---
-                // 3. SÓ DEPOIS de atualizar a grade, se foi o jogador 2, incrementamos a rodada.
+
                 if (jogadorAtual == 2)
                 {
                     rodadaAtual++;
                 }
 
-                // 4. Agora sim, checa o fim de jogo com o valor da rodada já atualizado.
+
                 ChecarFimDeJogo();
             }
         }
-        // --- NOVO MÉTODO PARA ATUALIZAR A TABELA FIXA ---
+  
         private void AtualizarGridFixo()
         {
-            // Garante que não tentaremos escrever fora dos limites da tabela (0, 1 ou 2)
+
             if (rodadaAtual >= maxRodadas) return;
 
-            // Define o valor na célula correta (linha = rodada, coluna = jogador)
+
             if (jogadorAtual == 1)
             {
                 int ultimoResultado = historicoJogador1[historicoJogador1.Count - 1];
                 dataGridViewHistorico.Rows[rodadaAtual].Cells[0].Value = ultimoResultado;
             }
-            else // jogadorAtual == 2
+            else 
             {
                 int ultimoResultado = historicoJogador2[historicoJogador2.Count - 1];
                 dataGridViewHistorico.Rows[rodadaAtual].Cells[1].Value = ultimoResultado;
@@ -189,13 +185,12 @@ namespace JogoDado_p1
 
                 MessageBox.Show(vencedor, "Fim de Jogo");
 
-                // --- MUDANÇA AQUI: RESETA O JOGO E A TABELA ---
                 rodadaAtual = 0;
                 vezJogador = 1;
                 historicoJogador1.Clear();
                 historicoJogador2.Clear();
 
-                // Limpa o conteúdo das células para a nova partida
+
                 foreach (DataGridViewRow row in dataGridViewHistorico.Rows)
                 {
                     row.Cells[0].Value = null;

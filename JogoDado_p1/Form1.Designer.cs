@@ -36,41 +36,40 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewHistorico).BeginInit();
             SuspendLayout();
 
-            // pictureBox1
+
             pictureBox1.Location = new System.Drawing.Point(40, 20);
             pictureBox1.Size = new System.Drawing.Size(120, 120);
             pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 
-            // pictureBox2
+
             pictureBox2.Location = new System.Drawing.Point(220, 20);
             pictureBox2.Size = new System.Drawing.Size(120, 120);
             pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 
-            // btnJogador1Normal
+
             btnJogador1Normal.Location = new System.Drawing.Point(40, 150);
             btnJogador1Normal.Size = new System.Drawing.Size(120, 30);
             btnJogador1Normal.Text = "Jogador1 Normal";
             btnJogador1Normal.Click += new System.EventHandler(this.btnJogador1Normal_Click);
 
-            // btnJogador1Viciado
+
             btnJogador1Viciado.Location = new System.Drawing.Point(40, 190);
             btnJogador1Viciado.Size = new System.Drawing.Size(120, 30);
             btnJogador1Viciado.Text = "Jogador1 Viciado";
             btnJogador1Viciado.Click += new System.EventHandler(this.btnJogador1Viciado_Click);
 
-            // btnJogador2Normal
+
             btnJogador2Normal.Location = new System.Drawing.Point(220, 150);
             btnJogador2Normal.Size = new System.Drawing.Size(120, 30);
             btnJogador2Normal.Text = "Jogador2 Normal";
             btnJogador2Normal.Click += new System.EventHandler(this.btnJogador2Normal_Click);
 
-            // btnJogador2Viciado
+
             btnJogador2Viciado.Location = new System.Drawing.Point(220, 190);
             btnJogador2Viciado.Size = new System.Drawing.Size(120, 30);
             btnJogador2Viciado.Text = "Jogador2 Viciado";
             btnJogador2Viciado.Click += new System.EventHandler(this.btnJogador2Viciado_Click);
 
-            // dataGridViewHistorico
             dataGridViewHistorico.Location = new System.Drawing.Point(40, 230);
             dataGridViewHistorico.Size = new System.Drawing.Size(300, 120);
             dataGridViewHistorico.ColumnCount = 2;
@@ -80,11 +79,11 @@
             dataGridViewHistorico.AllowUserToAddRows = false;
             dataGridViewHistorico.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 
-            // timer1
+
             timer1.Interval = 100;
             timer1.Tick += new System.EventHandler(this.timer1_Tick);
 
-            // Form1
+
             ClientSize = new System.Drawing.Size(400, 370);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox2);
